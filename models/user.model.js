@@ -54,6 +54,15 @@ const userSchema = new mongoose.Schema({
         type : String,
         required : true,
         default : "APPROVED"
+    },
+    //Establishing Relationship b/w user and ticket
+    ticketsCreated : {
+        type : [mongoose.SchemaTypes.ObjectId],
+        ref : "Ticket"
+    },
+    ticketsAssigned : {
+        type : [mongoose.SchemaTypes.ObjectId],
+        ref : "Ticket"
     }
 
 })

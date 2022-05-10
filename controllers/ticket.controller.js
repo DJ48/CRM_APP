@@ -139,6 +139,9 @@ exports.getOneTicket = async(req,res) => {
 
 /**
  *  Controller to update the ticket
+ *  TODO : 
+ *  1. Assignee Engineer should also be able to update the ticket
+ *  
  */
 
 exports.updateTicket = async(req,res)=>{
@@ -148,7 +151,7 @@ exports.updateTicket = async(req,res)=>{
         const ticket = await Ticket.findOne({
             _id : req.params.id
         });
-        console.log(ticket);
+        
         if(ticket == null){
             return res.status(200).send({
                 message : "Ticket doesn't exist"
@@ -156,9 +159,10 @@ exports.updateTicket = async(req,res)=>{
         }
 
         /**
-         *  Only the ticket requestor be allowed to update
+         *  Only the ticket requestor, Admin & Assigned Engineer should be allowed to update
+         *  
          */
-        if(ticket.reporter != req.userId){
+        if(ticket.reporter != req.userId && ticket.assignee != req.userId && req.userType != constants.userTypes.admin){
             return res.status(400).send({
                 message : "You are not authorized to update the ticket"
             })

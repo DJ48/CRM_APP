@@ -151,11 +151,19 @@ exports.updateTicket = async(req,res)=>{
         const ticket = await Ticket.findOne({
             _id : req.params.id
         });
-        
+
         if(ticket == null){
             return res.status(200).send({
                 message : "Ticket doesn't exist"
             })
+        }
+
+        /**
+        * If the ticket is not assigned to any engineer, any engineer
+        * can self assign themselves the given ticket
+        */
+        if(req.userType==constants.userTypes.engineer && ticket.assignee == undefined){
+            ticket.assignee = req.userId;
         }
 
         /**

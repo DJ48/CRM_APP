@@ -182,6 +182,11 @@ exports.updateTicket = async(req,res)=>{
         ticket.ticketPriority = req.body.ticketPriority != undefined ? req.body.ticketPriority : ticket.ticketPriority;
         ticket.status = req.body.status != undefined ? req.body.status : ticket.status;
 
+        //Ability to re-assign the ticket
+        if(req.userType == constants.userTypes.admin){
+            ticket.assignee = req.body.assignee != undefined ? req.body.assignee :ticket.assignee ;
+        }
+
         // saved the changed ticket
         const updatedTicket = await ticket.save();
         

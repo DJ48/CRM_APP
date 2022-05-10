@@ -45,7 +45,7 @@ verifyToken = (req,res,next)=>{
  isAdmin = async (req,res, next) =>{
 
     /**
-     * Fetcht user from the DB using the userId
+     * Fetch the user from the DB using the userId
      */
     const user = await User.findOne({userId : req.userId});
 
@@ -61,8 +61,24 @@ verifyToken = (req,res,next)=>{
     }
 }
 
+getUserType = async(req, res, next) =>{
+    /**
+     * Fetch the user from the DB using the userId
+     */
+     const user = await User.findOne({userId : req.userId});
+
+     /**
+      * Check what is the user type
+      */
+     if(user){
+        req.userType = user.userType;
+        next();
+     }
+}
+
 const authJwt = {
     verifyToken : verifyToken,
-    isAdmin : isAdmin
+    isAdmin : isAdmin,
+    getUserType : getUserType
 };
 module.exports= authJwt;

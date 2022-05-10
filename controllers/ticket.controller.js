@@ -71,16 +71,27 @@ exports.createTicket = async(req,res) =>{
 
 /**
  *  API to fetch all the tickets
+ *  Allow the user to filter based on
+ *  Depending on the user I need to return differnt list of tickets :
+ * 
+ *  1. ADMIN - Return all tickets
+ *  2. ENGINEER - All the tickets, either created or assigned to him/her
+ *  3. CUSTOMER - All the tickets created by him
  */
 
 exports.getAllTickets = async(req,res) =>{
 
     const statusReq = req.query.status;
-    const queryObj = {
-        reporter : req.userId
-    }
+    const userType = req.userType;
+    let queryObj = {};
+
     if(statusReq){
         queryObj.status = statusReq;
+    }
+    if(userType == constants.userTypes.customer){
+        queryObj.reporter = req.userId;
+    }else if(userType == constants.userTypes.engineer){
+        queryObj.$or= [ { reporter: req.userId }, { assignee: req.userId } ] 
     }
     
     try{

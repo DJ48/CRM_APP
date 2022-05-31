@@ -162,46 +162,32 @@ Features:-
 			}
         }
         ```
-    * Get ALL Tickets Api :- The user will pass access token as header and this api will display all the tickets raised by the authenticated user. User can also filter the tickets based on 
+    * Update Ticket Api :- The user will pass ticket_id as request parameter and the body with the fields that they want to update.
 
         ```
-        URL: http://127.0.0.1:3000/api/v1/post/get
-        Method: GET
+        URL: http://127.0.0.1:8081/crm/api/v1/tickets/6295c018f0cd0c3f89dac720
+        Method: PUT
         
-        Input Header:
-            type:- auth
-            value:- eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjQ0NzcyMDAwLCJleHAiOjE2NDU2MzYwMDB9.h89IJaB-Mpk_ozJtkHHc98sLLKjcaatxwRaqiXKOVbk
-            Note:- his value was generated during login.
-       
-       Output JSON:-
+        Input JSON:
+		{
+			"title" : "Trying to update the ticket",
+			"description" : "My balance is not updated.",
+			"ticketPriority" : 2,
+			"status" : "CLOSED"
+		}
+   
+    	Output JSON:-
         {
-	        "success": true,
-	        "msg": "Successfully displaying the post ",
-	        "data": {
-		        "post": [
-			        {
-				        "post_num": 1,
-				        "post": "post by user1.",
-				        "createdAt": "2022-02-13T17:18:21.000Z"
-			        },
-			        {
-				        "post_num": 2,
-				        "post": "another post by user 1.",
-				        "createdAt": "2022-02-13T17:28:56.000Z"
-			        },
-			        {
-				        "post_num": 3,
-				        "post": "Hi i am user 2.",
-				        "createdAt": "2022-02-13T17:32:11.000Z"
-			        },
-			        {
-				        "post_num": 4,
-				        "post": "User 2 is on vacation.",
-				        "createdAt": "2022-02-13T17:33:54.000Z"
-			        }
-		        ]
-	        }
-        }
+			"title": "Trying to update the ticket",
+			"description": "My balance is not updated.",
+			"ticketPriority": 2,
+			"status": "CLOSED",
+			"reporter": "DJ",
+			"assignee": "RJ",
+			"id": "6295c018f0cd0c3f89dac720",
+			"createdAt": "2022-05-31T07:13:28.297Z",
+			"updatedAt": "2022-05-31T07:13:28.298Z"
+		}
         ```
     * Filter Comment by user Api :- The user will pass auth token as header and this api will display the post of the logged in user. 
 

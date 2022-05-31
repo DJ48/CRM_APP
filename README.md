@@ -225,6 +225,65 @@ Features:-
 			}
 		]
         ```
+	* Fetch User by ID Api :- The user will pass the userId as request parameter and find the details of the user. 
+
+        ```
+        URL: http://127.0.0.1:8081/crm/api/v1/users/DJ
+        Method: GET
+        
+        Input Header:
+            type:- x-access-token
+            value:- eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjQ0NzcyMDAwLCJleHAiOjE2NDU2MzYwMDB9.h89IJaB-Mpk_ozJtkHHc98sLLKjcaatxwRaqiXKOVbk
+            Note:- This value was generated during login.
+        
+        Output JSON:-
+        [
+			{
+				"name": "Deepak",
+				"userId": "DJ",
+				"email": "dj@gmail.com",
+				"userType": "CUSTOMER",
+				"userStatus": "APPROVED"
+			}
+		]
+        ```
+	* Fetch All Users Api :- Only ADMIN is allowed to call this api. Admin can filter the result based on name, userType, userStatus and combination of these. 
+
+        ```
+        URL: http://127.0.0.1:8081/crm/api/v1/users
+        Method: GET
+        
+        Input Header:
+            type:- x-access-token
+            value:- eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjQ0NzcyMDAwLCJleHAiOjE2NDU2MzYwMDB9.h89IJaB-Mpk_ozJtkHHc98sLLKjcaatxwRaqiXKOVbk
+            Note:- This value was generated during login.
+        
+        Output JSON:-
+        [
+			{
+				"name": "Deepak",
+				"userId": "DJ",
+				"email": "dj@gmail.com",
+				"userType": "CUSTOMER",
+				"userStatus": "APPROVED"
+			},
+			{
+				"name": "Vish",
+				"userId": "admin",
+				"email": "kankvish7777@gmail.com",
+				"userType": "ADMIN",
+				"userStatus": "APPROVED"
+			},
+			{
+				"name": "Rahul",
+				"userId": "RJ",
+				"email": "rj@gmail.com",
+				"userType": "ENGINEER",
+				"userStatus": "APPROVED"
+			}
+		]
+        ```
+	
 
 ## Author
 

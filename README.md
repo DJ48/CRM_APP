@@ -247,11 +247,11 @@ Features:-
 			}
 		]
         ```
-	* Fetch All Users Api :- Only ADMIN is allowed to call this api. Admin can filter the result based on name, userType, userStatus and combination of these. 
+	* Update User Api :- Only ADMIN is allowed to call this api. Admin can approve an engineer  
 
         ```
-        URL: http://127.0.0.1:8081/crm/api/v1/users
-        Method: GET
+        URL: http://127.0.0.1:8081/crm/api/v1/users/RJ
+        Method: PUT
         
         Input Header:
             type:- x-access-token
@@ -259,29 +259,9 @@ Features:-
             Note:- This value was generated during login.
         
         Output JSON:-
-        [
-			{
-				"name": "Deepak",
-				"userId": "DJ",
-				"email": "dj@gmail.com",
-				"userType": "CUSTOMER",
-				"userStatus": "APPROVED"
-			},
-			{
-				"name": "Vish",
-				"userId": "admin",
-				"email": "kankvish7777@gmail.com",
-				"userType": "ADMIN",
-				"userStatus": "APPROVED"
-			},
-			{
-				"name": "Rahul",
-				"userId": "RJ",
-				"email": "rj@gmail.com",
-				"userType": "ENGINEER",
-				"userStatus": "APPROVED"
-			}
-		]
+        {
+			"message": "User record succesfully updated"
+		}
         ```
 	
 

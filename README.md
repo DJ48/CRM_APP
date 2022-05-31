@@ -76,10 +76,11 @@ Features:-
         
         	Input JSON:-
         	{
-				"name" : "Deepak",
- 				"userId" : "DJ",
-  				"email" : "dj@gmail.com",
- 				"password" : "Welcome1"
+				"name" : "Rahul",
+ 				"userId" : "RJ",
+  				"email" : "rj@gmail.com",
+ 				"password" : "Welcome12",
+				"userType" : "ENGINEER"
 			}
 	
         

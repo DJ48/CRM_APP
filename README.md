@@ -84,7 +84,7 @@ Features:-
 			}
 	
         
-     * SignIn Api :- The user will pass email and password for logging in. It will return a auth token that you have to use in authorization for other Api.
+     * SignIn Api :- The user will pass userId and password for logging in. It will return an access token that you have to use in authorization for other Api. Engineers can only login when they got approved by Admin user.
 
         ```
         URL: http://127.0.0.1:3000/api/v1/signin
@@ -92,19 +92,19 @@ Features:-
         
         Input JSON:-
         {
-	        "email":"test@gmail.com",
-	        "password":"12"
+	        	"userId":"DJ",
+	        	"password":"Welcome1"
         }
         
         Output JSON:-
         {
-	        "success": true,
-	        "msg": "Successfully logged in ",
-	        "data": {
-		        "username": "test@gmail.com",
-		        "authToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjQ0NzcyMDAwLCJleHAiOjE2NDU2MzYwMDB9.h89IJaB-Mpk_ozJtkHHc98sLLKjcaatxwRaqiXKOVbk"
-	        }
-        }
+			"name": "Deepak",
+			"userId": "DJ",
+			"email": "dj@gmail.com",
+			"userType": "CUSTOMER",
+			"userStatus": "APPROVED",
+			"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkRKIiwiaWF0IjoxNjUzOTc3NzkyLCJleHAiOjE2NTM5NzgzOTJ9.dOpvxLN9vp189F_uvRTM4jsICABMSurKJsO8oEKwkO0"
+		}
         ```
         <b>Note:- Save the auth token that you got as an output after login. It will be used in calling other APIs.</b>
      

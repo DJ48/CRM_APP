@@ -136,7 +136,7 @@ Features:-
 			}
         }
         ```
-    * Get All Tickets Api :- The user will pass access token as header and this api will display all the tickets raised by the authenticated user. User can also filter the tickets based on the status.
+    * Fetch All Tickets Api :- The user will pass access token as header and this api will display all the tickets raised by the authenticated user. User can also filter the tickets based on the status.
 
         ```
         URL:- http://127.0.0.1:8081/crm/api/v1/tickets  or (with filter) http://127.0.0.1:8081/crm/api/v1/tickets?status=OPEN
@@ -189,36 +189,41 @@ Features:-
 			"updatedAt": "2022-05-31T07:13:28.298Z"
 		}
         ```
-    * Filter Comment by user Api :- The user will pass auth token as header and this api will display the post of the logged in user. 
+    * Fetch All Users Api :- Only ADMIN is allowed to call this api. Admin can filter the result based on name, userType, userStatus and combination of these. 
 
         ```
-        URL: http://127.0.0.1:3000/api/v1/post/filter
-        Method: POST
+        URL: http://127.0.0.1:8081/crm/api/v1/users
+        Method: GET
         
         Input Header:
-            type:- auth
+            type:- x-access-token
             value:- eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjQ0NzcyMDAwLCJleHAiOjE2NDU2MzYwMDB9.h89IJaB-Mpk_ozJtkHHc98sLLKjcaatxwRaqiXKOVbk
             Note:- This value was generated during login.
         
         Output JSON:-
-        {
-	        "success": true,
-	        "msg": "Successfully filtered the post ",
-	        "data": {
-		        "post": [
-			        {
-				        "id": 1,
-				        "post": "post by user1.",
-				        "createdAt": "2022-02-13T17:18:21.000Z"
-			        },
-			        {
-				        "id": 2,
-				        "post": "another post by user 1.",
-				        "createdAt": "2022-02-13T17:28:56.000Z"
-			        }
-		        ]
-	        }
-        }
+        [
+	{
+		"name": "Deepak",
+		"userId": "DJ",
+		"email": "dj@gmail.com",
+		"userType": "CUSTOMER",
+		"userStatus": "APPROVED"
+	},
+	{
+		"name": "Vish",
+		"userId": "admin",
+		"email": "kankvish7777@gmail.com",
+		"userType": "ADMIN",
+		"userStatus": "APPROVED"
+	},
+	{
+		"name": "Rahul",
+		"userId": "RJ",
+		"email": "rj@gmail.com",
+		"userType": "ENGINEER",
+		"userStatus": "APPROVED"
+	}
+]
         ```
 
 ## Author

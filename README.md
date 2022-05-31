@@ -55,21 +55,36 @@ Features:-
 ### Executing program
 
 1. Download [Insomnia](https://insomnia.rest/download) or [Postman](https://www.postman.com/downloads/) for web api testing.
-2. I have created six api. I am gonna explain each api and their input json.
-    * SignUp Api :- The user will pass email, password and secret code for signing up. 
-
-        ```
-        URL: http://127.0.0.1:3000/api/v1/signup
-        Method: POST
+2. I am gonna explain each api and their input json.
+    * SignUp Api :- </br>
+    	i) Customer :- The user will pass name, userId, email, password for customer registration.
+	 
+        	URL: http://127.0.0.1:8081/crm/api/v1/auth/signup
+        	Method: POST
         
-        Input JSON:-
-        {
-	        "email":"test@gmail.com",
-	        "password":"12",
-	        "secret":"1"
-        }
-        ```
-     * SignIn Api :- The user will pass email and password for logging in. It will return a auth token that you have to use in authorization for other Api.
+        	Input JSON:-
+        	{
+				"name" : "Deepak",
+ 				"userId" : "DJ",
+  				"email" : "dj@gmail.com",
+ 				"password" : "Welcome1"
+			}
+		ii) Engineer :- The user will have to pass an extra field (i.e. userType) for engineer registration.</br>
+		
+			URL: http://127.0.0.1:8081/crm/api/v1/auth/signup
+        	Method: POST
+        
+        	Input JSON:-
+        	{
+				"name" : "Rahul",
+ 				"userId" : "RJ",
+  				"email" : "rj@gmail.com",
+ 				"password" : "Welcome12",
+				"userType" : "ENGINEER"
+			}
+	
+        
+     * SignIn Api :- The user will pass userId and password for logging in. It will return an access token that you have to use in authorization for other Api. Engineers can only login when they got approved by Admin user.
 
         ```
         URL: http://127.0.0.1:3000/api/v1/signin
@@ -77,19 +92,19 @@ Features:-
         
         Input JSON:-
         {
-	        "email":"test@gmail.com",
-	        "password":"12"
+	        	"userId":"DJ",
+	        	"password":"Welcome1"
         }
         
         Output JSON:-
         {
-	        "success": true,
-	        "msg": "Successfully logged in ",
-	        "data": {
-		        "username": "test@gmail.com",
-		        "authToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjQ0NzcyMDAwLCJleHAiOjE2NDU2MzYwMDB9.h89IJaB-Mpk_ozJtkHHc98sLLKjcaatxwRaqiXKOVbk"
-	        }
-        }
+			"name": "Deepak",
+			"userId": "DJ",
+			"email": "dj@gmail.com",
+			"userType": "CUSTOMER",
+			"userStatus": "APPROVED",
+			"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkRKIiwiaWF0IjoxNjUzOTc3NzkyLCJleHAiOjE2NTM5NzgzOTJ9.dOpvxLN9vp189F_uvRTM4jsICABMSurKJsO8oEKwkO0"
+		}
         ```
         <b>Note:- Save the auth token that you got as an output after login. It will be used in calling other APIs.</b>
      

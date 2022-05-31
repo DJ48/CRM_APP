@@ -87,8 +87,8 @@ Features:-
      * SignIn Api :- The user will pass userId and password for logging in. It will return an access token that you have to use in authorization for other Api. Engineers can only login when they got approved by Admin user.
 
         ```
-        URL: http://127.0.0.1:3000/api/v1/signin
-        Method :- GET
+        URL: http://127.0.0.1:8081/crm/api/v1/auth/signin
+        Method :- POST
         
         Input JSON:-
         {

@@ -17,7 +17,7 @@ const ticketSchema = new mongoose.Schema({
     ticketPriority : {
         type : Number,
         required : true,
-        default : constants.ticketPriority.fourr //Possible values : 1/2/3/4
+        default : constants.ticketPriority.four //Possible values : 1/2/3/4
     },
     status : {
         type : String,

@@ -202,28 +202,28 @@ Features:-
         
         Output JSON:-
         [
-	{
-		"name": "Deepak",
-		"userId": "DJ",
-		"email": "dj@gmail.com",
-		"userType": "CUSTOMER",
-		"userStatus": "APPROVED"
-	},
-	{
-		"name": "Vish",
-		"userId": "admin",
-		"email": "kankvish7777@gmail.com",
-		"userType": "ADMIN",
-		"userStatus": "APPROVED"
-	},
-	{
-		"name": "Rahul",
-		"userId": "RJ",
-		"email": "rj@gmail.com",
-		"userType": "ENGINEER",
-		"userStatus": "APPROVED"
-	}
-]
+			{
+				"name": "Deepak",
+				"userId": "DJ",
+				"email": "dj@gmail.com",
+				"userType": "CUSTOMER",
+				"userStatus": "APPROVED"
+			},
+			{
+				"name": "Vish",
+				"userId": "admin",
+				"email": "kankvish7777@gmail.com",
+				"userType": "ADMIN",
+				"userStatus": "APPROVED"
+			},
+			{
+				"name": "Rahul",
+				"userId": "RJ",
+				"email": "rj@gmail.com",
+				"userType": "ENGINEER",
+				"userStatus": "APPROVED"
+			}
+		]
         ```
 
 ## Author

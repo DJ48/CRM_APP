@@ -93,7 +93,7 @@ Features:-
         Input JSON:-
         {
 	        	"userId":"DJ",
-	        	"password":"Welcome1"
+	    	"password":"Welcome1"
         }
         
         Output JSON:-
@@ -106,55 +106,63 @@ Features:-
 			"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkRKIiwiaWF0IjoxNjUzOTc3NzkyLCJleHAiOjE2NTM5NzgzOTJ9.dOpvxLN9vp189F_uvRTM4jsICABMSurKJsO8oEKwkO0"
 		}
         ```
-        <b>Note:- Save the auth token that you got as an output after login. It will be used in calling other APIs.</b>
+        <b>Note:- Save the access token that you got as an output after login. It will be used in calling other APIs.</b>
      
-     * ForgetPassword Api :- The user will pass email and secret code as input and this api will display the user password. 
+     * Create Ticket Api :- The user will pass email and secret code as input and this api will display the user password. 
 
         ```
-        URL: http://127.0.0.1:3000/api/v1/forgetPassword
-        Method: GET
-        
-        Input JSON:-
-        {
-	        "email":"test@gmail.com",
-	        "secret":"1"
-        }
-        
-        Output JSON:-
-        {
-	        "success": true,
-	        "msg": "Successfully displayed the password ",
-	        "data": {
-		        "password": "12"
-	        }
-        }
-        ```
-    * Add Comment Api :- The user will pass post and auth token as input. The post will be successfully added in the database.
-
-        ```
-        URL:- http://127.0.0.1:3000/api/v1/post/add
+        URL: http://127.0.0.1:8081/crm/api/v1/tickets
         Method: POST
         
         Input JSON:-
         {
-	        "post":"post by user1."
-        }
-        
-        Input Header:
-            type:- auth
-            value:- eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjQ0NzcyMDAwLCJleHAiOjE2NDU2MzYwMDB9.h89IJaB-Mpk_ozJtkHHc98sLLKjcaatxwRaqiXKOVbk
-            Note:- This value was generated during login. 
+			"title" : "My first Ticket",
+			"description" : "My balance is not updated.",
+			"ticketPriority" : 1
+		}
         
         Output JSON:-
         {
-	        "success": true,
-	        "msg": "Successfully added the post ",
-	        "data": {
-		        "post": "post by user1."
-	        }
+	        	{
+				"title": "My first Ticket",
+				"description": "My balance is not updated.",
+				"ticketPriority": 1,
+				"status": "OPEN",
+				"reporter": "DJ",
+				"assignee": "RJ",
+				"id": "6295c018f0cd0c3f89dac720",
+				"createdAt": "2022-05-31T07:13:28.297Z",
+				"updatedAt": "2022-05-31T07:13:28.298Z"
+			}
         }
         ```
-    * Get ALL Comments Api :- The user will pass auth token as header and this api will display all the user's Post.
+    * Get All Tickets Api :- The user will pass access token as header and this api will display all the tickets raised by the authenticated user. User can also filter the tickets based on the status.
+
+        ```
+        URL:- http://127.0.0.1:8081/crm/api/v1/tickets  or (with filter) http://127.0.0.1:8081/crm/api/v1/tickets?status=OPEN
+        Method: GET
+        
+        Input Header:
+            type:- x-access-token
+            value:- eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkRKIiwiaWF0IjoxNjUzOTg3MTg2LCJleHAiOjE2NTM5ODc3ODZ9.F-HHbseNsvvmu0fpX_DqiBQ6h7wrSvAOfT_1cxyVrtw
+            Note:- This value was generated during login.
+        
+        Output JSON:-
+        {
+	        	{
+				"title": "My first Ticket",
+				"description": "My balance is not updated.",
+				"ticketPriority": 1,
+				"status": "OPEN",
+				"reporter": "DJ",
+				"assignee": "RJ",
+				"id": "6295c018f0cd0c3f89dac720",
+				"createdAt": "2022-05-31T07:13:28.297Z",
+				"updatedAt": "2022-05-31T07:13:28.298Z"
+			}
+        }
+        ```
+    * Get ALL Tickets Api :- The user will pass access token as header and this api will display all the tickets raised by the authenticated user. User can also filter the tickets based on 
 
         ```
         URL: http://127.0.0.1:3000/api/v1/post/get

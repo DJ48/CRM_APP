@@ -55,20 +55,34 @@ Features:-
 ### Executing program
 
 1. Download [Insomnia](https://insomnia.rest/download) or [Postman](https://www.postman.com/downloads/) for web api testing.
-2. I have created six api. I am gonna explain each api and their input json.
-    * SignUp Api :- The user will pass email, password and secret code for signing up. 
-
-        ```
-        URL: http://127.0.0.1:3000/api/v1/signup
-        Method: POST
+2. I am gonna explain each api and their input json.
+    * SignUp Api :- </br>
+    	i) Customer :- The user will pass name, userId, email, password for customer registration.
+	 
+        	URL: http://127.0.0.1:8081/crm/api/v1/auth/signup
+        	Method: POST
         
-        Input JSON:-
-        {
-	        "email":"test@gmail.com",
-	        "password":"12",
-	        "secret":"1"
-        }
-        ```
+        	Input JSON:-
+        	{
+				"name" : "Deepak",
+ 				"userId" : "DJ",
+  				"email" : "dj@gmail.com",
+ 				"password" : "Welcome1"
+			}
+		ii) Engineer :- The user will have to pass an extra field (i.e. userType) for engineer registration.</br>
+		
+			URL: http://127.0.0.1:8081/crm/api/v1/auth/signup
+        	Method: POST
+        
+        	Input JSON:-
+        	{
+				"name" : "Deepak",
+ 				"userId" : "DJ",
+  				"email" : "dj@gmail.com",
+ 				"password" : "Welcome1"
+			}
+	
+        
      * SignIn Api :- The user will pass email and password for logging in. It will return a auth token that you have to use in authorization for other Api.
 
         ```

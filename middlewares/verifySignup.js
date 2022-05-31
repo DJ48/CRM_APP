@@ -59,7 +59,7 @@ validateSignupRequest = async(req,res,next)=>{
 
     const userTypes = [constants.userTypes.admin, constants.userTypes.customer, constants.userTypes.engineer];
     const userType = req.body.userType;
-    if(userType && !userType.includes(userTypes)){
+    if(userType && !userTypes.includes(userType)){
         return res.status(400).send({
             message : "Failed ! User Type is not correctly Provided"
         })

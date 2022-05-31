@@ -247,7 +247,7 @@ Features:-
 			}
 		]
         ```
-	* Update User Api :- Only ADMIN is allowed to call this api. Admin can approve an engineer  
+	* Update User Api :- Only ADMIN is allowed to call this api. Admin can approve/remove an engineer.  
 
         ```
         URL: http://127.0.0.1:8081/crm/api/v1/users/RJ
